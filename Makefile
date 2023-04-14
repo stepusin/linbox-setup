@@ -9,12 +9,12 @@ linbox-install-k3s : linbox-uninstall-k3s
 		sh -s - \
 	&& sudo mkdir -p /var/lib/rancher/k3s/agent/etc/containerd/ \
 	&& sudo wget \
-		https://k3d.io/v4.4.8/usage/guides/cuda/config.toml.tmpl \
+		https://k3d.io/v5.4.8/usage/advanced/cuda/config.toml.tmpl \
 		-O /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl \
 	&& sudo systemctl start k3s \
 	&& sleep 20 \
 	&& kubectl create \
-		-f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.12.2/nvidia-device-plugin.yml
+		-f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.14.0/nvidia-device-plugin.yml
 
 mac-update-kube-config :
 	ssh \
